@@ -1,0 +1,147 @@
+/* _style.css by Daniel Pullan */
+
+
+:root {
+
+/* Titles use secondary colour, body text uses primary, things like code comments use tertiary */
+/* Change colours in :root as you can theme your own version with your own colours quickly */
+
+    --background: #fff;
+
+    --primary_colour: #111; 
+    --secondary_colour: #DC3D24;
+
+    --title_font: 'Oswald', sans-serif;
+    --body_font: 'Oswald', sans-serif;
+}
+
+html {
+    background: var(--background);
+}
+body {
+    font-family: var(--body_font);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(primary_colour);
+    background: var(--background);
+}
+::-webkit-selection {
+    color: #fff;
+    background: #f7c873;
+}
+::-moz-selection {
+    color: var(primary_colour);
+    background: #f7c873;
+}
+::selection {
+    color: #fff;
+    background: #f7c873;
+}
+a {
+    color: var(--secondary_colour);
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+a:hover,
+a:focus,
+a:active {
+    color: var(--secondary_colour);
+    outline: none;
+    text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--title_font);
+    color: var(--primary_colour);
+}
+h1 {
+    font-size: 42px;
+    margin-bottom: 0px;
+}
+p {
+    margin-bottom: 30px;
+    color: var(--primary_colour);
+    line-height: 1.4;
+    letter-spacing:0.5px;
+}
+li {
+    color: var(--primary_colour);
+}
+code {
+    color: #fff;
+}
+strong {
+    color: #fff;
+}
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+figure {
+    -webkit-margin-start: 0px
+}
+.articleGrid {
+margin-left:10%;
+}
+header {
+    text-align: center;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: var(--background);
+  display: inline-block;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.active {
+  background-color: var(--background);
+  color: white;
+  text-decoration: underline;
+
+}
+
+::-webkit-scrollbar {
+display: none;
+}

@@ -1,0 +1,40 @@
+<div class="footer">
+<span>Not on GitHub <a href="https://danielpullan.co.uk">My Website</a>.</span>
+</div>
+
+</div>
+
+<script>
+    console.log("Hi! This was made by Dan. https://danielpullan.co.uk");
+    console.log("Can you find any other easter eggs? ;-)")
+</script>
+
+<script type="text/javascript">
+  var timeout = setTimeout("location.reload(true);",60000);
+  function resetTimeout() {
+    clearTimeout(timeout);
+    timeout = setTimeout("location.reload(true);",60000);
+  }
+</script>
+
+
+<script>
+  function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+} 
+</script>
+
+<script>
+fetch('http://127.0.0.1:5000/woohoo')
+  .then(response => response.text())
+  .then(data => console.log(data));
+
+</script>
+
+</body>
+</html>
