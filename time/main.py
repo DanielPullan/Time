@@ -10,20 +10,20 @@ app = Flask(__name__)
 @app.route('/')
 def index():
 	
-	datetime_proper= datetime.now(pytz.timezone('Europe/London'))
+	datetime_uk= datetime.now(pytz.timezone('Europe/London'))
 	datetime_central = datetime.now(pytz.timezone('America/Chicago'))
 	datetime_eastern = datetime.now(pytz.timezone('America/New_York'))
 	datetime_onguardforthee = datetime.now(pytz.timezone('America/Vancouver'))
 	datetime_norge = datetime.now(pytz.timezone('Europe/Oslo'))
 
 
-	proper = datetime_proper.strftime('%H:%M')
+	uk = datetime_uk.strftime('%H:%M')
 	central = datetime_central.strftime('%H:%M')
 	eastern = datetime_eastern.strftime('%H:%M')
 	onguardforthee = datetime_onguardforthee.strftime('%H:%M')
 	norge = datetime_norge.strftime('%H:%M')
 
-	return render_template("index.html", proper=proper, eastern=eastern, central=central, onguardforthee=onguardforthee, norge=norge)
+	return render_template("index.html", uk=uk, eastern=eastern, central=central, onguardforthee=onguardforthee, norge=norge)
 
 @app.route('/dos')
 def dos():
