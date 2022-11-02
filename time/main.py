@@ -39,6 +39,7 @@ def dos():
 	# so maybe something like "on first load, get the preferences (europe/london is "home", europe/oslo "meeting") record this as a cookie. On page load, send preference to flask, get the data, return in template. page loads remembering this. Click on "edit" to go to /modify, to wipe the preferences and start over again.
 	# this requires a simple local cookie, but nothing needs to be recorded on a server.
 	# may need to self host a API location thingy, or expect user to know the name of the tz that they need
+	# would also be cool to record a preference for emoji or text, as well as the description
 
 	return render_template("index.html")
 
