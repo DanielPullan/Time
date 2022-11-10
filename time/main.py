@@ -9,6 +9,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+
+	name = request.cookies.get('userID')
 	
 	datetime_uk= datetime.now(pytz.timezone('Europe/London'))
 	datetime_central = datetime.now(pytz.timezone('America/Chicago'))
@@ -23,7 +25,7 @@ def index():
 	onguardforthee = datetime_onguardforthee.strftime('%H:%M')
 	norge = datetime_norge.strftime('%H:%M')
 
-	return render_template("index.html", uk=uk, eastern=eastern, central=central, onguardforthee=onguardforthee, norge=norge)
+	return render_template("index.html", name=name, uk=uk, eastern=eastern, central=central, onguardforthee=onguardforthee, norge=norge)
 
 @app.route('/dos')
 def dos():
@@ -42,6 +44,20 @@ def dos():
 	# would also be cool to record a preference for emoji or text, as well as the description
 
 	return render_template("index.html")
+
+@app.route('/setsetset')
+def setsetset():
+   return render_template('setcookie.html')
+
+@app.route('/setcookie', methods = ['POST', 'GET'])
+def setcookie():
+   if request.method == 'POST':
+	   user = request.form['nm']
+	   
+	   resp = make_response(render_template('index.html'))
+	   resp.set_cookie('userID', user)
+   
+   return resp
 
 
 if __name__ == "__main__":
