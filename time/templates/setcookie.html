@@ -1,11 +1,21 @@
-<html>
-   <body>
+{% include "header.html" %}
    
-      <form action = "/setcookie" method = "POST">
-         <p><h3>Enter userID</h3></p>
-         <p><input type = 'text' name = 'nm'/></p>
-         <p><input type = 'submit' value = 'Login'/></p>
-      </form>
-      
-   </body>
-</html>
+<form action = "/setcookie" method = "POST">
+   <p><h3>Set Preferences</h3></p>
+   <p><input type = 'text' placeholder="name" name = 'user'/></p>
+   <p><input list='common-timezones' placeholder="Europe/London" type = 'text' name = 'option1'/></p>
+   <p><input type = 'text' placeholder="London" name = 'option1name'/></p>
+   <p><input list='common-timezones' type = 'text'  placeholder="Europe/Dublin" name = 'option2'/></p>
+   <p><input type = 'text' placeholder="Dublin" name = 'option2name'/></p>
+   <p><input type = 'submit' value = 'Login'/></p>
+</form>
+
+<datalist id="common-timezones">
+            <option value="Europe/Dublin">
+            <option value="Europe/Paris">
+            <option value="Australia/Darwin">
+            <option value="Poland">
+            <option value="Pacific/Fiji">
+</datalist>
+
+{% include "footer.html" %}
