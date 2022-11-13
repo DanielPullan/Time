@@ -83,7 +83,7 @@ def setcookie():
 	   option2 = request.form['option2']
 	   option2name = request.form['option2name']
 	   
-	   resp = make_response(render_template('index.html'))
+	   resp = make_response(redirect('/'))
 	   resp.set_cookie('userID', user)
 	   resp.set_cookie('option1', option1)
 	   resp.set_cookie('option1name', option1name)
