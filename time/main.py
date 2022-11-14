@@ -12,8 +12,12 @@ def index():
 
 	option1 = request.cookies.get('option1')
 	option2 = request.cookies.get('option2')
+	
 	option1name = request.cookies.get('option1name')
 	option2name = request.cookies.get('option2name')
+
+	option1emoji = request.cookies.get('option1emoji')
+	option2emoji = request.cookies.get('option2emoji')
 
 	
 	datetime_uk= datetime.now(pytz.timezone('Europe/London'))
@@ -34,8 +38,8 @@ def index():
 	option1 = datetime_option1.strftime('%H:%M')
 	option2 = datetime_option2.strftime('%H:%M')
 
-	option1list = [option1, option1name]
-	option2list = [option2, option2name]
+	option1list = [option1, option1name, option1emoji]
+	option2list = [option2, option2name, option2emoji]
 
 
 
@@ -51,17 +55,23 @@ def setcookie():
    if request.method == 'POST':
 	   option1 = request.form['option1']
 	   option1name = request.form['option1name']
+	   option1emoji = request.form['option1emoji']
 
 	   option2 = request.form['option2']
 	   option2name = request.form['option2name']
+	   option2emoji = request.form['option2emoji']
 
-	   option1list = [option1, option1name]
+	   option1list = [option1, option1name, option1emoji]
+	   option2list = [option2, option2name, option2emoji]
 	   
 	   resp = make_response(redirect('/'))	
 	   resp.set_cookie('option1', option1list[0])
 	   resp.set_cookie('option1name', option1list[1])
-	   resp.set_cookie('option2', option2)
-	   resp.set_cookie('option2name', option2name)
+	   resp.set_cookie('option1emoji', option1list[2])
+	   resp.set_cookie('option2', option2list[0])
+	   resp.set_cookie('option2name', option2list[1])
+	   resp.set_cookie('option2emoji', option2list[2])
+
    
    return resp
 
