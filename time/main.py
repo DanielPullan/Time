@@ -42,26 +42,8 @@ def index():
 
 	return render_template("index.html", uk=uk, eastern=eastern, central=central, onguardforthee=onguardforthee, norge=norge, option1list=option1list, option2list=option2list)
 
-@app.route('/dos')
-def dos():
-	
-	# Use for testing.
-
-	# Thoughts would be something like 
-	# 1. record user preference on timezones and names of those locations
-	# 2. return as a view
-	# 3. be able to modify those preferneces
-
-
-	# so maybe something like "on first load, get the preferences (europe/london is "home", europe/oslo "meeting") record this as a cookie. On page load, send preference to flask, get the data, return in template. page loads remembering this. Click on "edit" to go to /modify, to wipe the preferences and start over again.
-	# this requires a simple local cookie, but nothing needs to be recorded on a server.
-	# may need to self host a API location thingy, or expect user to know the name of the tz that they need
-	# would also be cool to record a preference for emoji or text, as well as the description
-
-	return render_template("index.html")
-
-@app.route('/setsetset')
-def setsetset():
+@app.route('/boxboxbox')
+def boxboxbox():
    return render_template('setcookie.html')
 
 @app.route('/setcookie', methods = ['POST', 'GET'])
@@ -86,7 +68,3 @@ def setcookie():
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=5000, debug=True)
-
-
-# Salem, eastern - America/New_York
-# texas, central - America/Chicago
