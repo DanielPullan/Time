@@ -7,6 +7,7 @@ from flask import Flask, request, render_template, make_response, redirect, url_
 app = Flask(__name__)
 
 
+
 name="Noisy"
 
 @app.route('/')
@@ -17,12 +18,7 @@ def index():
 	option2 = "Europe/Dublin"
 	option2name= "dublin"
 
-	testname = request.cookies.get('name')
-
-	if testname != '':
-		name = request.cookies.get('name')
-	else:
-		name = "Guest"
+	
 	option1 = request.cookies.get('option1')
 	option2 = request.cookies.get('option2')
 	option1name = request.cookies.get('option1name')
@@ -49,7 +45,7 @@ def index():
 
 
 
-	return render_template("index.html", name=name, uk=uk, eastern=eastern, central=central, onguardforthee=onguardforthee, norge=norge, option1=option1, option1name=option1name, option2=option2, option2name=option2name)
+	return render_template("index.html", uk=uk, eastern=eastern, central=central, onguardforthee=onguardforthee, norge=norge, option1=option1, option1name=option1name, option2=option2, option2name=option2name)
 
 @app.route('/dos')
 def dos():
@@ -76,7 +72,6 @@ def setsetset():
 @app.route('/setcookie', methods = ['POST', 'GET'])
 def setcookie():
    if request.method == 'POST':
-	   user = request.form['user']
 	   option1 = request.form['option1']
 	   option1name = request.form['option1name']
 
@@ -84,7 +79,6 @@ def setcookie():
 	   option2name = request.form['option2name']
 	   
 	   resp = make_response(redirect('/'))
-	   resp.set_cookie('userID', user)
 	   resp.set_cookie('option1', option1)
 	   resp.set_cookie('option1name', option1name)
 	   resp.set_cookie('option2', option2)
