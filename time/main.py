@@ -10,14 +10,20 @@ app = Flask(__name__)
 @app.route('/')
 def index():
 
-	option1 = request.cookies.get('option1')
-	option2 = request.cookies.get('option2')
-	
-	option1name = request.cookies.get('option1name')
-	option2name = request.cookies.get('option2name')
-
-	option1emoji = request.cookies.get('option1emoji')
-	option2emoji = request.cookies.get('option2emoji')
+	if request.cookies.get('option1') == None:
+		option1 = 'Europe/London'
+		option2 = 'Europe/Dublin'
+		option1name = 'London'
+		option2name = 'Dublin'
+		option1emoji = '🇬🇧'
+		option2emoji = '🇮🇪'
+	else:
+		option1 = request.cookies.get('option1')
+		option2 = request.cookies.get('option2')
+		option1name = request.cookies.get('option1name')
+		option2name = request.cookies.get('option2name')
+		option1emoji = request.cookies.get('option1emoji')
+		option2emoji = request.cookies.get('option2emoji')
 
 	
 	datetime_uk= datetime.now(pytz.timezone('Europe/London'))
@@ -77,4 +83,4 @@ def setcookie():
 
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=5000, debug=True)
+	app.run(host="0.0.0.0", port=500, debug=True)
