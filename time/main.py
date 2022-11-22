@@ -12,10 +12,10 @@ def index():
 
 	if request.cookies.get('option1') == None:
 		option1 = 'Europe/London'
-		option2 = 'Europe/Dublin'
 		option1name = 'London'
-		option2name = 'Dublin'
 		option1emoji = '🇬🇧'
+		option2 = 'Europe/Dublin'
+		option2name = 'Dublin'
 		option2emoji = '🇮🇪'
 	else:
 		option1 = request.cookies.get('option1')
@@ -83,4 +83,4 @@ def setcookie():
 
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=500, debug=True)
+	app.run(host="0.0.0.0", port=5000, debug=True)
