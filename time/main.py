@@ -2,9 +2,16 @@ from datetime import datetime
 import pytz
 from flask import Flask
 from flask import Flask, request, render_template, make_response, redirect, url_for, Response, redirect, url_for
+import sys
 
 
 app = Flask(__name__)
+
+try:
+	exposeport = sys.argv[1]
+except	:
+	exposeport = 5000
+
 
 
 @app.route('/')
@@ -19,10 +26,10 @@ def index():
 		option2emoji = '🇮🇪'
 	else:
 		option1 = request.cookies.get('option1')
-		option2 = request.cookies.get('option2')
 		option1name = request.cookies.get('option1name')
-		option2name = request.cookies.get('option2name')
 		option1emoji = request.cookies.get('option1emoji')
+		option2 = request.cookies.get('option2')
+		option2name = request.cookies.get('option2name')
 		option2emoji = request.cookies.get('option2emoji')
 
 	
@@ -47,13 +54,11 @@ def index():
 	option1list = [option1, option1name, option1emoji]
 	option2list = [option2, option2name, option2emoji]
 
-
-
-
 	return render_template("index.html", uk=uk, eastern=eastern, central=central, onguardforthee=onguardforthee, norge=norge, option1list=option1list, option2list=option2list)
 
 @app.route('/boxboxbox')
 def boxboxbox():
+
    return render_template('setcookie.html')
 
 @app.route('/setcookie', methods = ['POST', 'GET'])
@@ -77,10 +82,9 @@ def setcookie():
 	   resp.set_cookie('option2', option2list[0])
 	   resp.set_cookie('option2name', option2list[1])
 	   resp.set_cookie('option2emoji', option2list[2])
-
    
    return resp
 
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=5000, debug=True)
+	app.run(host="0.0.0.0", port=exposeport	, debug=True)
