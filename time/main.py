@@ -13,7 +13,7 @@ app = Flask(__name__)
 try:
 	exposeport = sys.argv[1]
 except	:
-	exposeport = 5000
+	exposeport = 5678
 
 
 @app.route('/')

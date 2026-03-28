@@ -1,14 +1,19 @@
 {% include "header.html" %}
+
    
 <form action = "/setcookie" method = "POST">
    <p><h3>Set Preferences</h3></p>
+
    <p><input list='common-timezones' placeholder="Europe/London" type = 'text' name = 'option1'/></p>
    <p><input type = 'text' placeholder="London" name = 'option1name'/></p>
-   <p><input type = 'text' placeholder="🇮🇪" name = 'option1emoji'/></p>
+   <p><input list='common-timezones-emojis' type = 'text' placeholder="🇮🇪" name = 'option1emoji'/></p>
+   
    <p><input list='common-timezones' type = 'text'  placeholder="Europe/Dublin" name = 'option2'/></p>
    <p><input type = 'text' placeholder="Dublin" name = 'option2name'/></p>
-   <p><input type = 'text' placeholder="🇳🇴" name = 'option2emoji'/></p>
-   <p><input type = 'submit' value = 'Login'/></p>
+   <p><input list='common-timezones-emojis' type = 'text' placeholder="🇳🇴" name = 'option2emoji'/></p>
+
+   <p><input type = 'submit' value = 'Submit'/></p>
+
 </form>
 
 <datalist id="common-timezones">
@@ -590,4 +595,17 @@
             <option value="WET">
 </datalist>
 
-{% include "footer.html" %}
+<datalist id="common-timezones-emojis">
+            <option value='🇬🇧'>
+            <option value='🇮🇪'>
+            <option value='🇺🇦'>
+            <option value='🇫🇷'>
+            <option value='🇨🇦'>
+            <option value='🇳🇴'>
+            <option value='🇦🇺'>
+            <option value='🇲🇽'>
+            <option value='🇿🇦'>
+            <option value='🇪🇸'>
+            <option value='🇺🇸'>
+            <option value='🇧🇷'>
+</datalist>
