@@ -100,15 +100,14 @@ def boxboxbox():
 
 @app.route('/vroom')
 def vroom():
-	whoop = getTime("Miami")
 
-	for x in vroom_timezone_map:
-		print(x, getTime(x))
-
-	vroom_data = [
-        {"track": track, "time": getTime(track)} 
-        for track in vroom_timezone_map
-    ]
+	vroom_data = []
+	for track, tz_string in vroom_timezone_map.items():
+		vroom_data.append({
+			"track": track,
+			"time": getTime(track), 
+			"offset": get_offset_string(tz_string)
+	})
 
 	return render_template('vroom.html', vroom_data=vroom_data)
 

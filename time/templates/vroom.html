@@ -2,9 +2,10 @@
 
 <div class="row">
     {% for item in vroom_data %}
-        <div class="col-3">
+        <div class="col-4">
             {{ item.track }}
             {{ item.time }}
+            {{ item.offset }}
         </div>
     {% endfor %}
 
