@@ -4,7 +4,6 @@ from flask import Flask
 from flask import Flask, request, render_template, make_response, redirect, url_for, Response, redirect, url_for
 import sys
 
-
 app = Flask(__name__)
 
 # Setting for custom port support. If you'd like to use a port other than 5000, just set an argument when running time.
@@ -14,7 +13,6 @@ try:
 	exposeport = sys.argv[1]
 except	:
 	exposeport = 5678
-
 
 @app.route('/')
 def index():
@@ -66,6 +64,40 @@ def index():
 @app.route('/boxboxbox')
 def boxboxbox():
    return render_template('setcookie.html')
+
+@app.route('/vroom')
+def vroom():
+	vroom_timezone_map = {
+	    "Australia": "Australia/Melbourne",
+	    "China": "Asia/Shanghai",
+	    "Japan": "Asia/Tokyo",
+	    "Bahrain": "Asia/Bahrain",
+	    "Saudi Arabia": "Asia/Riyadh",
+	    "Miami": "America/New_York",
+	    "Canada": "America/Toronto",
+	    "Monaco": "Europe/Monaco",
+	    "Barcelona": "Europe/Madrid",
+	    "Austria": "Europe/Vienna",
+	    "Silverstone": "Europe/London",
+	    "Belgium": "Europe/Brussels",
+	    "Hungary": "Europe/Budapest",
+	    "Netherlands": "Europe/Amsterdam",
+	    "Italy": "Europe/Rome",
+	    "Spain": "Europe/Madrid",
+	    "Azerbaijan": "Asia/Baku",
+	    "Singapore": "Asia/Singapore",
+	    "Texas": "America/Chicago",
+	    "Mexico": "America/Mexico_City",
+	    "Brazil": "America/Sao_Paulo",
+	    "Las Vegas": "America/Los_Angeles",
+	    "Qatar": "Asia/Qatar",
+	    "Abu Dhabi": "Asia/Dubai"
+	}
+
+	blah = vroom_timezone_map.get("Silverstone".lower())
+	whoop = blah.strftime('%H:%M')
+
+	return render_template('vroom.html', whoop=whoop)
 
 @app.route('/setcookie', methods = ['POST', 'GET'])
 def setcookie():
