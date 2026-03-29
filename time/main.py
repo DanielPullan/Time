@@ -47,6 +47,22 @@ def getTime(timezone):
 	o = w.strftime('%H:%M')
 	return o
 
+def get_offset_string(track_tz_string):
+    home_tz = pytz.timezone('Europe/London')
+    track_tz = pytz.timezone(track_tz_string)
+    
+    # Get aware datetimes immediately
+    home_now = datetime.now(home_tz)
+    track_now = datetime.now(track_tz)
+    
+    # Calculate difference via UTC offsets
+    diff_seconds = track_now.utcoffset().total_seconds() - home_now.utcoffset().total_seconds()
+    diff_hours = int(diff_seconds / 3600)
+    
+    if diff_hours == 0:
+        return "Same time"
+    return f"{'+' if diff_hours > 0 else ''}{diff_hours} hours"
+
 @app.route('/')
 def index():
 	# If there's no cookies set, use everything in the if statement as default options.
