@@ -1,12 +1,13 @@
 {% include "header.html" %}
 
 <div class="row">
-    <div class="col-6">
-        <p>🇬🇧 <strong>{{whoop}}</strong> whoop </p>
-        <hr>
-    </div>
+    {% for item in vroom_data %}
+        <div class="col-3">
+            {{ item.track }}
+            {{ item.time }}
+        </div>
+    {% endfor %}
 
 </div>
-
 
 {% include "footer.html" %}

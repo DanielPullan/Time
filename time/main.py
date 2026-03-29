@@ -11,8 +11,41 @@ app = Flask(__name__)
 # Example: 'poetry run python3 time/main.py' will run on port 5000 as it's the default.
 try:
 	exposeport = sys.argv[1]
-except	:
+except:
 	exposeport = 5678
+
+vroom_timezone_map = {
+    "Australia": "Australia/Melbourne",
+    "China": "Asia/Shanghai",
+    "Japan": "Asia/Tokyo",
+    "Bahrain": "Asia/Bahrain",
+    "Saudi Arabia": "Asia/Riyadh",
+    "Miami": "America/New_York",
+    "Canada": "America/Toronto",
+    "Monaco": "Europe/Monaco",
+    "Barcelona": "Europe/Madrid",
+    "Austria": "Europe/Vienna",
+    "Silverstone": "Europe/London",
+    "Belgium": "Europe/Brussels",
+    "Hungary": "Europe/Budapest",
+    "Netherlands": "Europe/Amsterdam",
+    "Italy": "Europe/Rome",
+    "Spain": "Europe/Madrid",
+    "Azerbaijan": "Asia/Baku",
+    "Singapore": "Asia/Singapore",
+    "Texas": "America/Chicago",
+    "Mexico": "America/Mexico_City",
+    "Brazil": "America/Sao_Paulo",
+    "Las Vegas": "America/Los_Angeles",
+    "Qatar": "Asia/Qatar",
+    "Abu Dhabi": "Asia/Dubai"
+}
+
+def getTime(timezone):
+	t = vroom_timezone_map.get(timezone)
+	w = datetime.now(pytz.timezone(t))
+	o = w.strftime('%H:%M')
+	return o
 
 @app.route('/')
 def index():
@@ -67,37 +100,17 @@ def boxboxbox():
 
 @app.route('/vroom')
 def vroom():
-	vroom_timezone_map = {
-	    "Australia": "Australia/Melbourne",
-	    "China": "Asia/Shanghai",
-	    "Japan": "Asia/Tokyo",
-	    "Bahrain": "Asia/Bahrain",
-	    "Saudi Arabia": "Asia/Riyadh",
-	    "Miami": "America/New_York",
-	    "Canada": "America/Toronto",
-	    "Monaco": "Europe/Monaco",
-	    "Barcelona": "Europe/Madrid",
-	    "Austria": "Europe/Vienna",
-	    "Silverstone": "Europe/London",
-	    "Belgium": "Europe/Brussels",
-	    "Hungary": "Europe/Budapest",
-	    "Netherlands": "Europe/Amsterdam",
-	    "Italy": "Europe/Rome",
-	    "Spain": "Europe/Madrid",
-	    "Azerbaijan": "Asia/Baku",
-	    "Singapore": "Asia/Singapore",
-	    "Texas": "America/Chicago",
-	    "Mexico": "America/Mexico_City",
-	    "Brazil": "America/Sao_Paulo",
-	    "Las Vegas": "America/Los_Angeles",
-	    "Qatar": "Asia/Qatar",
-	    "Abu Dhabi": "Asia/Dubai"
-	}
+	whoop = getTime("Miami")
 
-	blah = vroom_timezone_map.get("Silverstone".lower())
-	whoop = blah.strftime('%H:%M')
+	for x in vroom_timezone_map:
+		print(x, getTime(x))
 
-	return render_template('vroom.html', whoop=whoop)
+	vroom_data = [
+        {"track": track, "time": getTime(track)} 
+        for track in vroom_timezone_map
+    ]
+
+	return render_template('vroom.html', vroom_data=vroom_data)
 
 @app.route('/setcookie', methods = ['POST', 'GET'])
 def setcookie():
