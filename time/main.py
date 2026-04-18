@@ -129,27 +129,27 @@ def vroom():
 
 @app.route('/setcookie', methods = ['POST', 'GET'])
 def setcookie():
-   if request.method == 'POST':
-	   option1 = request.form['option1']
-	   option1name = request.form['option1name']
-	   option1emoji = request.form['option1emoji']
+	if request.method == 'POST':
+		option1 = request.form['option1']
+		option1name = request.form['option1name']
+		option1emoji = request.form['option1emoji']
 
-	   option2 = request.form['option2']
-	   option2name = request.form['option2name']
-	   option2emoji = request.form['option2emoji']
+		option2 = request.form['option2']
+		option2name = request.form['option2name']
+		option2emoji = request.form['option2emoji']
 
-	   option1list = [option1, option1name, option1emoji]
-	   option2list = [option2, option2name, option2emoji]
-	   
-	   resp = make_response(redirect('/'))	
-	   resp.set_cookie('option1', option1list[0])
-	   resp.set_cookie('option1name', option1list[1])
-	   resp.set_cookie('option1emoji', option1list[2])
-	   resp.set_cookie('option2', option2list[0])
-	   resp.set_cookie('option2name', option2list[1])
-	   resp.set_cookie('option2emoji', option2list[2])
-   
-   return resp
+		option1list = [option1, option1name, option1emoji]
+		option2list = [option2, option2name, option2emoji]
+
+		resp = make_response(redirect('/'))	
+		resp.set_cookie('option1', option1list[0])
+		resp.set_cookie('option1name', option1list[1])
+		resp.set_cookie('option1emoji', option1list[2])
+		resp.set_cookie('option2', option2list[0])
+		resp.set_cookie('option2name', option2list[1])
+		resp.set_cookie('option2emoji', option2list[2])
+
+		return resp
 
 
 if __name__ == "__main__":
